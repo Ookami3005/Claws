@@ -37,14 +37,29 @@ if [[ $1 = "install" ]]; then
         command -v john > /dev/null && sudo $pac_man remove -y john 2> /dev/null
 
         # Dependencias
-        sudo $pac_man -y install $john_deps
+        sudo $pac_man install -y $john_deps
 
         # Clonado del repo oficial
         echo -e "Clonando John del repositorio oficial...\n"
         temp_dir=$(mktemp -d)
-        (cd $temp_dir ; git clone https://github.com/openwall/john -b bleeding-jumbo john)
+        git clone https://github.com/openwall/john -b bleeding-jumbo "$temp_dir/john"
         echo -e "Compilando John...\n"
-        (cd "$temp_dir/john/src" && ./configure && make -s clean && make -sj4)
+        cd "$temp_dir/john/src" && ./configure && make -s clean && make -sj4
+
+        echo -e "\nExtrayendo scripts...\n"
+        sudo ln -s /usr/bin/python3 /sbin/python
+        cd "$temp_dir/john/run"
+        mkdir -p "$HOME/bin"
+        mkdir -p "$HOME/bin/2john"
+        mv john "${HOME}/bin/2john/."
+        for item in *(2john|tojohn)* ; do
+            dest=$(cut -d "." -f 1 <<< $item)
+            mv $item "${HOME}/bin/2john/$dest"
+        done
+
+        echo -e "\nAñadiendo al PATH...\n"
+        echo "export PATH=\"${HOME}/bin/2john:$PATH\"" >> $HOME/.zshrc
+        cd
     fi
 fi
 
