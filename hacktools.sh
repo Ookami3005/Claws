@@ -28,7 +28,7 @@ tools=(john nmap ffuf hydra gobuster sqlmap)
 # Dependencias de John The Reaper
 john_deps=(libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev)
 
-# Función que compila a John desde el repositorio oficial
+# Función auxiliar que compila los scripts extra de John desde el repositorio oficial
 build_john () {
 
     # Pedimos un argumento
@@ -37,6 +37,7 @@ build_john () {
     fi
 
     # Instalar las dependencias
+    echo -e "\nInstalando dependencias de John...\n"
     sudo $pac_man install -y $john_deps
     clear
 
@@ -60,9 +61,8 @@ build_john () {
     mkdir -p "$HOME/bin"
     mkdir -p "$HOME/bin/2john"
 
-    # Comenzamos a transferir los ejecutables
+    # Transferir los ejecutables
     cd "$1/john/run"
-    mv john "${HOME}/bin/2john/."
     for item in *(2john|tojohn)* ; do
         dest=$(cut -d "." -f 1 <<< $item)
         mv $item "${HOME}/bin/2john/$dest"
