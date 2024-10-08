@@ -80,7 +80,7 @@ clear
 if [[ $1 = "install" ]]; then
     # Compilamos scripts adicionales de John
     build_john $(mktemp -d)
-else 
+else
     sudo $pac_man remove -y $john_deps
     sudo rm -rf "${HOME}/bin/2john"
 fi
