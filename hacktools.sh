@@ -23,10 +23,10 @@ if ! command -v nala > /dev/null ; then
 fi
 
 # Herramientas principales en los repositorios oficiales
-tools=(nmap ffuf hydra gobuster sqlmap)
+tools=(john nmap ffuf hydra gobuster sqlmap)
 
 # Dependencias de John The Reaper
-john_deps=(git build-essential libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev)
+john_deps=(libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev)
 
 # Función que compila a John desde el repositorio oficial
 build_john () {
@@ -36,20 +36,19 @@ build_john () {
         exit 1
     fi
 
-    # Borrar (si existe) la versión de John del repositorio
-    command -v john > /dev/null && sudo $pac_man remove -y john 2> /dev/null
-
     # Instalar las dependencias
     sudo $pac_man install -y $john_deps
+    clear
 
     # Clonado del repo oficial
     echo -e "\nClonando John del repositorio oficial...\n"
     temp_dir=$(mktemp -d)
     git clone https://github.com/openwall/john -b bleeding-jumbo "$1/john"
+    clear
 
     # Iniciando la compilación
     echo -e "\nCompilando John...\n"
-    cd "$1/john/src" && ./configure && make -s clean && make -sj4
+    cd "$1/john/src" && ./configure > /dev/null && make -s clean /dev/null && make -sj4 /dev/null
 
     # Configuración de los ejecutables
     echo -e "\nExtrayendo scripts...\n"
@@ -75,16 +74,13 @@ build_john () {
     echo "export PATH=\"${HOME}/bin/2john:$PATH\"" >> $HOME/.zshrc
 }
 
-echo -e "Instalando herramientas del repositorio...\n"
 sudo $pac_man $1 -y $tools
+clear
 
 if [[ $1 = "install" ]]; then
-    elec="s"
-    echo -n "Desea instalar 'John The Reaper jumbo'? [s/n]: "
-    read elec
-
-    if [[ $elec = s ]]; then
-        build_john $(mktemp -d)
-    fi
+    # Compilamos scripts adicionales de John
+    build_john $(mktemp -d)
+else 
+    sudo $pac_man remove -y $john_deps
+    sudo rm -rf "${HOME}/bin/2john"
 fi
-
