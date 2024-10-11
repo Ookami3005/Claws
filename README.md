@@ -17,6 +17,8 @@ es:
 2. Ejecutar el *Script* con './':
     `./script.sh`
 
+## Índice
+
 > Sé que está vacío, dame tiempo
 > Besos a Danna
 
