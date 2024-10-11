@@ -17,4 +17,4 @@ es:
 > Sé que está vacío, dame tiempo
 > Besos a Danna
 
-- Ook
+- Ookami
