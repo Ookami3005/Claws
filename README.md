@@ -12,9 +12,11 @@ Si no estas familiarizado con la ejecución de un *Script*, la idea básica (sup
 es:
 
 1. Dar permisos de ejecución al *Script*
+
     `chmod u+x script.sh`
 
 2. Ejecutar el *Script* con './':
+
     `./script.sh`
 
 ## Índice
@@ -22,6 +24,7 @@ es:
 - Demo
 
 > Sé que está vacío, dame tiempo
+
 > Besos a Danna
 
 - Ookami
