@@ -1,12 +1,10 @@
 # Claws
 
-Recopilatorio de *Scripts* que espero sean utiles.
+Recopilatorio de *Scripts* que espero sean utiles (o al menos lo fueron para mi).
 
-En esta rama principal yacen los *Scripts* que pueden ejecutarse en cualquier distro *Linux*, pues
-no requieren de herramientas específicas de alguna distro (como de su gestor de paquetes).
-
-Por supuesto, asumo que no tienes una instalación mínima o al menos que no tendrás problema en instalar
-las herramientas que haya utilizado para la redacción de estos *Scripts*
+En esta rama yacen los *Scripts* específicos de **Fedora**, o alguna distro derivada de esta.
+Es decir, utilizo herramientas específicas de **Fedora**, como el gestor de paquetes `dnf`,
+repositorios de esta, paquetes *.rpm*, etc.
 
 Si no estas familiarizado con la ejecución de un *Script*, la idea básica (suponiendo que te encuentras en la carpeta donde están los *Scripts*)
 es:
@@ -21,9 +19,9 @@ es:
 
 ## Índice
 
-- Demo
-- Demo 2
-- Demo 3
+- Demo Fedora
+- Demo 2 Fedora
+- Demo 3 Fedora
 
 > Sé que está vacío, dame tiempo
 
