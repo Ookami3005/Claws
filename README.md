@@ -3,6 +3,7 @@
 Recopilatorio de *Scripts* que espero sean utiles (o al menos lo fueron para mi).
 
 En esta rama yacen los *Scripts* específicos de **Fedora**, o alguna distro derivada de esta.
+
 Es decir, utilizo herramientas específicas de **Fedora**, como el gestor de paquetes `dnf`,
 repositorios de esta, paquetes *.rpm*, etc.
 
@@ -13,7 +14,7 @@ es:
 
     `chmod u+x script.sh`
 
-2. Ejecutar el *Script* con './':
+2. Ejecutar el *Script* con '`./`':
 
     `./script.sh`
 
