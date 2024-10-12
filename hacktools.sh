@@ -8,7 +8,7 @@ if [[ $# -ne 1 ]] ; then
     exit 1
 fi
 
-# Revisamos la instrucción dada
+# Revisamos la instrucción dada es válida
 if [[ $1 != "install" ]] && [[ $1 != "remove" ]] ; then
     echo "Error: Argumento incorrecto"
     exit 1
@@ -23,7 +23,7 @@ if ! command -v nala > /dev/null ; then
 fi
 
 # Herramientas principales en los repositorios oficiales
-tools=(john nmap ffuf hydra gobuster sqlmap)
+tools=(telnet john nmap ffuf hydra gobuster sqlmap)
 
 # Dependencias de John The Reaper
 john_deps=(libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev)
@@ -38,24 +38,24 @@ build_john () {
 
     # Instalar las dependencias
     echo -e "\nInstalando dependencias de John...\n"
-    sudo $pac_man install -y $john_deps
+    sudo $pac_man install -y ${john_deps[@]}
     clear
 
     # Clonado del repo oficial
-    echo -e "\nClonando John del repositorio oficial...\n"
+    echo -e "Clonando John del repositorio oficial...\n"
     temp_dir=$(mktemp -d)
     git clone https://github.com/openwall/john -b bleeding-jumbo "$1/john"
     clear
 
     # Iniciando la compilación
-    echo -e "\nCompilando John...\n"
+    echo -e "Compilando John...\n"
     cd "$1/john/src" && ./configure > /dev/null && make -s clean /dev/null && make -sj4 /dev/null
 
     # Configuración de los ejecutables
-    echo -e "\nExtrayendo scripts...\n"
+    echo -e "Extrayendo scripts...\n"
 
     # Generamos un enlace simbólico por temas de compatibilidad con los scripts
-    sudo ln -s /usr/bin/python3 /sbin/python
+    sudo ln -s /usr/bin/python3 /sbin/python 2> /dev/null
 
     # Definimos la carpeta donde almacenaremos los ejecutables
     mkdir -p "$HOME/bin"
@@ -63,22 +63,26 @@ build_john () {
 
     # Transferir los ejecutables
     cd "$1/john/run"
-    for item in *(2john|tojohn)* ; do
+    for item in *{2,to}john* ; do
         dest=$(cut -d "." -f 1 <<< $item)
         mv $item "${HOME}/bin/2john/$dest"
     done
     cd
 
-    echo -e "\nPor favor añada al PATH la carpeta '~/bin/2john'...\n"
+    echo -e "Por favor añada al PATH la carpeta '~/bin/2john'...\n"
 }
 
-sudo $pac_man $1 -y $tools
+# Instalamos las herramientas principales del repositorio
+sudo $pac_man $1 -y ${tools[@]}
 clear
 
 if [[ $1 = "install" ]]; then
+
     # Compilamos scripts adicionales de John
     build_john $(mktemp -d)
 else
-    sudo $pac_man remove -y $john_deps
+
+    # Destruimos los Scripts auxiliares de John
     sudo rm -rf "${HOME}/bin/2john"
+    echo "Listo!"
 fi
