@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # Script que automatiza la instalación de las herramientas
 # que más utilizo en el Hacking Fight Club
 
@@ -69,9 +69,7 @@ build_john () {
     done
     cd
 
-    # Añadimos la carpeta al PATH
-    echo -e "\nAñadiendo al PATH...\n"
-    echo "export PATH=\"${HOME}/bin/2john:$PATH\"" >> $HOME/.zshrc
+    echo -e "\nPor favor añada al PATH la carpeta '~/bin/2john'...\n"
 }
 
 sudo $pac_man $1 -y $tools
