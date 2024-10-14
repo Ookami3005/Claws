@@ -23,7 +23,7 @@ if ! command -v nala > /dev/null ; then
 fi
 
 # Herramientas principales en los repositorios oficiales
-tools=(telnet john nmap ffuf hydra gobuster sqlmap)
+tools=(telnet john nmap ffuf hydra gobuster)
 
 # Dependencias de John The Reaper
 john_deps=(libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev)
@@ -44,7 +44,7 @@ build_john () {
     # Clonado del repo oficial
     echo -e "Clonando John del repositorio oficial...\n"
     temp_dir=$(mktemp -d)
-    git clone https://github.com/openwall/john -b bleeding-jumbo "$1/john"
+    git clone https://github.com/openwall/john -b bleeding-jumbo "$1/john" || exit 1
     clear
 
     # Iniciando la compilación
@@ -55,7 +55,7 @@ build_john () {
     echo -e "Extrayendo scripts...\n"
 
     # Generamos un enlace simbólico por temas de compatibilidad con los scripts
-    sudo ln -s /usr/bin/python3 /sbin/python 2> /dev/null
+    command -v python > /dev/null || sudo ln -s /usr/bin/python3 /sbin/python 2> /dev/null
 
     # Definimos la carpeta donde almacenaremos los ejecutables
     mkdir -p "$HOME/bin"
@@ -72,17 +72,44 @@ build_john () {
     echo -e "Por favor añada al PATH la carpeta '~/bin/2john'...\n"
 }
 
+setup_sqlmap () {
+
+    # Limpiamos (si existe) la instalación de sqlmap del repositorio
+    sudo nala purge sqlmap 2> /dev/null
+
+    # Creamos (si no existe la carpeta ~/bin)
+    mkdir -p ${HOME}/bin
+
+    # Clonamos el repositorio oficial de sqlmap a nuestra carpeta de binarios
+    git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ${HOME}/bin/sqlmap-dev
+    clear
+
+    # Creamos un enlace simbólico del ejecutable principal del reposiorio a una ubicación del PATH (/usr/bin)
+    sudo ln -sv ${HOME}/bin/sqlmap-dev/sqlmap.py /usr/bin/sqlmap
+
+    echo -e "SQLMAP configurado!\n"
+}
+
 # Instalamos las herramientas principales del repositorio
 sudo $pac_man $1 -y ${tools[@]}
 clear
 
 if [[ $1 = "install" ]]; then
 
+    # Configuramos sqlmap
+    setup_sqlmap
+
     # Compilamos scripts adicionales de John
     build_john $(mktemp -d)
+
 else
 
     # Destruimos los Scripts auxiliares de John
     sudo rm -rf "${HOME}/bin/2john"
+
+    # Destruimos el directorio y el enlace simbólico de sqlmap
+    sudo rm -rf ${HOME}/bin/sqlmap-dev
+    sudo rm /usr/bin/sqlmap
+
     echo "Listo!"
 fi
