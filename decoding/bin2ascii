@@ -1,0 +1,20 @@
+#!/sbin/python
+
+import argparse
+
+# Configuración del parser
+
+parser = argparse.ArgumentParser(description="Script simple para pasar binario a hexadecimal")
+parser.add_argument("payload", type=str, help="Cadena por decodificar")
+parser.add_argument("--separator",'-s',type=str, help="Caracter que separa los bloques de bits")
+args = parser.parse_args()
+
+separador = args.separator
+mensaje = args.payload
+
+if separador is None:
+    caracs = [mensaje[i:i+8] for i in range(0,len(mensaje),8)]
+    print(''.join([chr(int(c,2)) for c in caracs]), end='')
+else:
+    caracs = mensaje.split(separador)
+    print(''.join([chr(int(c,2)) for c in caracs]), end='')
