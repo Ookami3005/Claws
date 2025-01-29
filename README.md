@@ -13,11 +13,15 @@ es:
 
 1. Dar permisos de ejecución al *Script*
 
-    `chmod u+x script.sh`
+   ```bash
+    chmod u+x script.sh
+   ```
 
-2. Ejecutar el *Script* con './':
+3. Ejecutar el *Script* con './':
 
-    `./script.sh`
+   ```bash
+   ./script.sh
+   ```
 
 ## Índice
 
