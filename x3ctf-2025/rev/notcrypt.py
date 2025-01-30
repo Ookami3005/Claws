@@ -1,0 +1,44 @@
+#!//usr/bin/env python
+
+# x3CTF 2025
+# NotCrypto: https://github.com/x3ctf/challenges-2025/tree/main/rev/notcrypto
+
+"""
+My solution
+"""
+
+# ------------------
+# Ookami
+# Hackers Fight Club
+# ------------------
+
+# Expected bytes
+encrypt_flag=b"\x16\x2d\x79\xca\x56\xc6\x65\xe9\xe9\x16\x66\x23\x09\x2d\x1b\x09\x1c\x09\xc6\x1c\x1f\xad\xe9\xda\xa0\xc6\x1a\x66\x09\xad\x81\x1c\x80\x39\xa0\x21\x09\x65\x2d\x30\xf6\x57\xf6\xa2\x65\x65\x21\xa2"
+
+# Byte array for encryption
+byte_array=b'c|w{\xf2ko\xc50\x01g+\xfe\xd7\xabv\xca\x82\xc9}\xfaYG\xf0\xad\xd4\xa2\xaf\x9c\xa4r\xc0\xb7\xfd\x93&6?\xf7\xcc4\xa5\xe5\xf1q\xd81\x15\x04\xc7#\xc3\x18\x96\x05\x9a\x07\x12\x80\xe2\xeb\'\xb2u\t\x83,\x1a\x1bnZ\xa0R;\xd6\xb3)\xe3/\x84S\xd1\x00\xed \xfc\xb1[j\xcb\xbe9JLX\xcf\xd0\xef\xaa\xfbCM3\x85E\xf9\x02\x7fP<\x9f\xa8Q\xa3@\x8f\x92\x9d8\xf5\xbc\xb6\xda!\x10\xff\xf3\xd2\xcd\x0c\x13\xec_\x97D\x17\xc4\xa7~=d]\x19s`\x81O\xdc"*\x90\x88F\xee\xb8\x14\xde^\x0b\xdb\xe02:\nI\x06$\\\xc2\xd3\xacb\x91\x95\xe4y\xe7\xc87m\x8d\xd5N\xa9lV\xf4\xeaez\xae\x08\xbax%.\x1c\xa6\xb4\xc6\xe8\xddt\x1fK\xbd\x8b\x8ap>\xb5fH\x03\xf6\x0ea5W\xb9\x86\xc1\x1d\x9e\xe1\xf8\x98\x11i\xd9\x8e\x94\x9b\x1e\x87\xe9\xceU(\xdf\x8c\xa1\x89\r\xbf\xe6BhA\x99-\x0f\xb0T\xbb\x16'
+
+# Reverse the cipher process
+def decipher_char(c):
+    global byte_array
+    index=ord(c)
+    for i in range(0xfff,-1,-1):
+        index = byte_array.index(index ^ (i & 0xff))
+    return chr(index)
+
+# Reorder the retrieved flag
+def reorder_flag(disordered_flag):
+    flag=['' for _ in disordered_flag]
+    for i in range(0,len(encrypt_flag),8):
+        flag[i]=disordered_flag[i+2]
+        flag[i+1]=disordered_flag[i+6]
+        flag[i+2]=disordered_flag[i+4]
+        flag[i+3]=disordered_flag[i+3]
+        flag[i+4]=disordered_flag[i]
+        flag[i+5]=disordered_flag[i+5]
+        flag[i+6]=disordered_flag[i+7]
+        flag[i+7]=disordered_flag[i+1]
+    return flag
+
+# Output the decrypted flag
+print('Flag: '+''.join([decipher_char(chr(c)) for c in reorder_flag(encrypt_flag)]))

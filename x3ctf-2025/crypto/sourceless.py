@@ -7,8 +7,10 @@
 My Solution
 """
 
+# ------------------
 # Ookami
 # Hackers Fight Club
+# ------------------
 
 # IMPORTS
 from pwn import xor

@@ -7,11 +7,13 @@
 Official solution
 """
 
+# ------------------
 # Ookami
 # Hackers Fight Club
+# ------------------
 
 # IMPORTS
-from pwn import remote
+from pwn import remote,context
 from argparse import ArgumentParser
 from string import printable
 
@@ -23,6 +25,9 @@ parser.add_argument("-v", dest='verbosity', action='store_true')
 
 # Parse Arguments
 args = parser.parse_args()
+
+if args.verbosity:
+    context.log_level = 'debug'
 
 #
 # Starts connection
@@ -75,7 +80,9 @@ print()
 print(f'Removed nonce flag: {denonced_flag}')
 print()
 
+#
 # Decrypt flag with dictionary
+#
 flag=''
 for c in denonced_flag:
     flag += dictionary[chr(c)]
