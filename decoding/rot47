@@ -1,7 +1,14 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
+# ------------------
+# Ookami
+# Hackers Fight Club
+# ------------------
+
+# Revisa que reciba un argumento
 if [[ $# -ne 1 ]] ; then
   exit 1
 fi
 
+# Decodifica (o codifica) rot47
 echo "$1" | tr '\!-~' 'P-~\!-O'
