@@ -25,11 +25,20 @@ es:
 
 ## Índice
 
-- Demo
-- Demo 2
-- Demo 3
+- **Decodificación**
+- **Portswigger Web Academy**
+  - **Inyección SQL**
+    - [Inyección condicional a ciegas](./portswigger-academy/blindsqli_lab.py)
+- **x3CTF 2025**
+  - **Web**
+  - **Crypto**
+    - *Sourceless-Crypto*: [Mi solución](./x3ctf-2025/crypto/sourceless.py) o [Solución oficial](./x3ctf-2025/crypto/official_sourceless.py)
+  - **Reversing**
+    - [Pickle-Season](./x3ctf-2025/rev/pickle-season.py)
+    - [NotCrypto](./x3ctf-2025/rev/notcrypt.py)
+  - **PWN**
+    - [Devnull-as-a-service](./x3ctf-2025/pwn/dev_null.py)
 
-> Sé que está vacío, dame tiempo
 
 > Besos a Danna
 
