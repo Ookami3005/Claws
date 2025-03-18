@@ -1,0 +1,97 @@
+Volatility Foundation Volatility Framework 2.6.1
+
+[FVEK] Address : 0x8087865bead0
+[FVEK] Cipher  : AES-XTS 128 bit (Win 10+)
+[FVEK] FVEK: 4f79d4a00d5e9b25965b89581a6a599c
+
+[FVEK] Address : 0x40d857c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0x40de7ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x40dfeab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0x40f89bce0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x7f818d857c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0x7f818de7ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x7f818dfeab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0x7f818f89bce0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x7f844d857c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0x7f844de7ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x7f844dfeab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0x7f844f89bce0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x80878347ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0x8087835eab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0x808784457c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0xfb000d857c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0xfb000de7ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0xfb000dfeab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0xfb000f89bce0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0xfb3fcd857c90
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: d40582190eb6f067691120bbbe55e511
+
+[FVEK] Address : 0xfb3fcde7ece0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097
+
+[FVEK] Address : 0xfb3fcdfeab80
+[FVEK] Cipher  : AES 256-bit (Win 8+)
+[FVEK] FVEK: 65b8064ec7acea96726aa18d294213176fd513a62a95c80720648f0590211364
+
+[FVEK] Address : 0xfb3fcf89bce0
+[FVEK] Cipher  : AES 128-bit (Win 8+)
+[FVEK] FVEK: 039e111586d5f9d974a571190474d097

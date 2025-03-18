@@ -1,0 +1,14 @@
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win10x64_19041
+                     AS Layer1 : SkipDuplicatesAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/ookami/picoCTF/bitlocker-2/memdump.mem)
+                      PAE type : No PAE
+                           DTB : 0x1ad000L
+                          KDBG : 0xf8006340eb20L
+          Number of Processors : 2
+     Image Type (Service Pack) : 0
+                KPCR for CPU 0 : 0xfffff800617eb000L
+                KPCR for CPU 1 : 0xffffb98179e67000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2025-03-10 02:58:56 UTC+0000
+     Image local date and time : 2025-03-09 22:58:56 -0400
